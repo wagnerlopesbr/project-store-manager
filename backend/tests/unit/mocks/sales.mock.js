@@ -29,10 +29,25 @@ const notFoundSale = {
   data: { message: 'Sale not found' },
 };
 
+const insertDB = {
+  id: 5,
+  itemsSold: [
+    { productId: 1, quantity: 5 },
+    { productId: 2, quantity: 5 },
+  ],
+};
+
+const insertedSales = {
+  status: 'CREATED',
+  data: insertDB,
+};
+
 module.exports = {
   salesDB,
   salesDBbyId,
   foundSale,
   notFoundSale,
   foundSales,
+  insertDB,
+  insertedSales,
 };

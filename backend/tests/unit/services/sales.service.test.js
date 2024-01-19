@@ -28,4 +28,15 @@ describe('TESTING SERVICES LAYER: sales.service.js', function () {
     const { status } = await salesService.findById(null);
     expect(status).to.be.equal('NOT_FOUND');
   });
+
+  it('should insert a sale', async function () {
+    sinon.stub(salesModel, 'insert').resolves(5);
+    const testData = [
+      { productId: 1, quantity: 5 },
+      { productId: 2, quantity: 5 },
+    ];
+    const { status, data } = await salesService.insert(testData);
+    expect(status).to.be.equal('CREATED');
+    expect(data).to.be.deep.equal({ id: 5, itemsSold: testData });
+  });
 });

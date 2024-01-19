@@ -6,7 +6,15 @@ const { expect } = require('chai');
 chai.use(sinonChai);
 const salesService = require('../../../src/services/sales.service');
 const salesController = require('../../../src/controllers/sales.controller');
-const { salesDB, salesDBbyId, foundSale, notFoundSale, foundSales } = require('../mocks/sales.mock');
+const {
+  salesDB,
+  salesDBbyId,
+  foundSale,
+  notFoundSale,
+  foundSales,
+  insertDB,
+  insertedSales,
+} = require('../mocks/sales.mock');
 
 describe('TESTING CONTROLLERS LAYER: sales.controller.js', function () {
   afterEach(function () {
@@ -57,5 +65,23 @@ describe('TESTING CONTROLLERS LAYER: sales.controller.js', function () {
     await salesController.findById(req, res);
     expect(res.status).to.be.calledWith(404);
     expect(res.json).to.have.been.calledWith({ message: 'Sale not found' });
+  });
+
+  it('should insert a sale', async function () {
+    sinon.stub(salesService, 'insert').resolves(insertedSales);
+    const req = {
+      body: [
+        { productId: 1, quantity: 5 },
+        { productId: 2, quantity: 5 },
+      ],
+    };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await salesController.insert(req, res);
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(insertDB);
   });
 });

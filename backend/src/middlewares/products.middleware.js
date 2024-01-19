@@ -7,7 +7,9 @@ const validateInsert = (req, res, next) => {
   }
 
   if (keywords.name.length < 5) {
-    return res.status(http.INVALID_ARGUMENT).json({ message: '"name" length must be at least 5 characters long' });
+    return res.status(http.INVALID_ARGUMENT).json(
+      { message: '"name" length must be at least 5 characters long' },
+    );
   }
 
   next();

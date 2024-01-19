@@ -1,5 +1,5 @@
 const salesService = require('../services/sales.service');
-const HTTPStatus = require('../utils/HTTPStatus');
+const { HTTPStatus } = require('../utils/HTTPStatus');
 
 const findAll = async (_req, res) => {
   const { status, data } = await salesService.findAll();

@@ -1,5 +1,5 @@
 const productsService = require('../services/products.service');
-const HTTPStatus = require('../utils/HTTPStatus');
+const { HTTPStatus } = require('../utils/HTTPStatus');
 
 const findAll = async (_req, res) => {
   const { status, data } = await productsService.findAll();

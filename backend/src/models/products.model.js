@@ -12,7 +12,14 @@ const findById = async (id) => {
   return result;
 };
 
+const insert = async (product) => {
+  const sqlQuery = 'INSERT INTO products (name) VALUES (?)';
+  const [{ insertId }] = await connection.execute(sqlQuery, [product]);
+  return insertId;
+};
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };

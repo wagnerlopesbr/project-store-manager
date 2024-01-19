@@ -33,10 +33,22 @@ const notFoundProduct = {
   data: { message: 'Product not found' },
 };
 
+const insertDB = {
+  id: 4,
+  name: 'Piano',
+};
+
+const insertedProduct = {
+  status: 'CREATED',
+  data: insertDB,
+};
+
 module.exports = {
   productsDB,
   productsDBbyId,
   foundProduct,
   notFoundProduct,
   foundProducts,
+  insertDB,
+  insertedProduct,
 };

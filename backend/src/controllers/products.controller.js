@@ -12,7 +12,14 @@ const findById = async (req, res) => {
   return res.status(HTTPStatus(status)).json(data);
 };
 
+const insert = async (req, res) => {
+  const { name } = req.body;
+  const { status, data } = await productsService.insert(name);
+  return res.status(HTTPStatus(status)).json(data);
+};
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };

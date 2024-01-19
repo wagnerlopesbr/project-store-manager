@@ -39,4 +39,15 @@ describe('TESTING SERVICES LAYER: sales.service.js', function () {
     expect(status).to.be.equal('CREATED');
     expect(data).to.be.deep.equal({ id: 5, itemsSold: testData });
   });
+
+  it('shouldnt insert a sale if product not found', async function () {
+    sinon.stub(salesModel, 'insert').resolves(5);
+    sinon.stub(salesService, 'ifProductsExists').resolves(false);
+    const testData = [
+      { productId: 24, quantity: 5 },
+      { productId: 21, quantity: 5 },
+    ];
+    const { status } = await salesService.insert(testData);
+    expect(status).to.be.equal('NOT_FOUND');
+  });
 });

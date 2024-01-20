@@ -28,4 +28,25 @@ describe('TESTING SERVICES LAYER: products.service.js', function () {
     const { status } = await productsService.findById(null);
     expect(status).to.be.equal('NOT_FOUND');
   });
+
+  it('should insert a product', async function () {
+    sinon.stub(productsModel, 'insert').resolves(4);
+    const { status, data } = await productsService.insert('Piano');
+    expect(status).to.be.equal('CREATED');
+    expect(data).to.be.deep.equal({ id: 4, name: 'Piano' });
+  });
+
+  it('should update a product', async function () {
+    sinon.stub(productsModel, 'update').resolves(1);
+    const { status, data } = await productsService.update(4, 'Guitar');
+    expect(status).to.be.equal('SUCCESS');
+    expect(data).to.be.deep.equal({ id: 4, name: 'Guitar' });
+  });
+
+  it('should remove a product', async function () {
+    sinon.stub(productsModel, 'remove').resolves(1);
+    const { status, data } = await productsService.remove(4);
+    expect(status).to.be.equal('NO_CONTENT');
+    expect(data).to.be.deep.equal({ message: 'Deleted or non existent' });
+  });
 });

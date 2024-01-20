@@ -29,4 +29,16 @@ describe('TESTING MODELS LAYER: products.model.js', function () {
     expect(response).to.be.an('object');
     expect(response).to.be.deep.equal(insertDB);
   });
+
+  it('should update a product', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+    const response = await productsModel.update(4, 'Guitar');
+    expect(response).to.be.deep.equal(1);
+  });
+
+  it('should remove a product', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+    const response = await productsModel.remove(4);
+    expect(response).to.be.deep.equal(1);
+  });
 });

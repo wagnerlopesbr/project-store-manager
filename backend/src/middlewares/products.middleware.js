@@ -12,6 +12,10 @@ const validateInsert = (req, res, next) => {
     );
   }
 
+  if (!keywords) {
+    return res.status(http.BAD_REQUEST).json({ message: 'Product not found' });
+  }
+
   next();
 };
 

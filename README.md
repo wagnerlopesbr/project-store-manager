@@ -1,10 +1,15 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Store Manager - Project
+
+## O que desenvolvi?
+
+### Uma API RESTful utilizando a arquitetura em camadas (modelo MSC). A API construída é um sistema de gerenciamento de vendas em que é possível criar, visualizar, deletar e atualizar produtos e vendas (CRUD). Utilizei o banco de dados MySQL para a gestão de dados.
+
+### Desenvolvi também alguns testes para garantir as funcionalidades das implementações utilizando Chai e Sinon.
+
+
+## Habilidades testadas no projeto:
+
+### Interagir com um banco de dados relacional MySQL;
+### Implementar uma API utilizando arquitetura em camadas;
+### Criar validações para os dados recebidos pela API;
+### Escrever testes para APIs para garantir a implementação dos endpoints;
